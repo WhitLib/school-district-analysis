@@ -26,3 +26,18 @@ Additionally, the following metrics were recreated:
 
 ## 2 Results
 
+### 2.1 How is the district summary affected?
+
+The changes between the original and recreated school district summary only differ slightly. Images of the two DataFrames are portrayed below: 
+
+
+#### Original: 
+<img width="922" alt="Screen Shot 2022-02-01 at 6 54 01 PM" src="https://user-images.githubusercontent.com/95978097/152086127-d03b5cc5-e289-4fff-af68-d3bb45dffb46.png">
+
+#### Updated:
+<img width="922" alt="Screen Shot 2022-02-01 at 6 52 28 PM" src="https://user-images.githubusercontent.com/95978097/152085978-3a3892fa-a6f4-4a5d-a647-46ddb91f83d7.png">
+
+
+### 2.2 How is the school summary affected?
+
+### 2.3 Replacing Ninth Grade Scores
