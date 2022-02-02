@@ -66,7 +66,7 @@ Images of the original and updated DataFrames for the Per School Summary are sho
 Replacing the ninth grade math and reading scores to NaN for Thomas High School greatly reduced its perceived performance against the other schools in the district. 
 Without recalculating the new student count for THS, inaccurate data were included to get % Passing Math, % Passing Reading, and % Overall Passing - making it appear that THS had one of the lowest passing percentages in the district (which ultimately is incorrect.) 
 
-#### *Math and Reading Scores by Grade*
+#### 2.3a *Math and Reading Scores by Grade*
 
 When analyzing other metrics in this analysis, replacing the reading and math scores for THS' ninth graders eliminated any data for standardized testing scores for ninth graders at THS, making any *valid* comparison for ninth grade inaccurate. A code snippet and DataFrames for math and reading scores by grade are displayed below: 
 
@@ -85,13 +85,13 @@ reading_scores_by_grade = pd.DataFrame({
               "11th": eleventh_grade_reading_scores,
               "12th": twelfth_grade_reading_scores})
 ````
-##### Average Math Score by Grade: 
+##### 2.3b Average Math Score by Grade: 
 <img width="386" alt="Screen Shot 2022-02-02 at 8 19 30 AM" src="https://user-images.githubusercontent.com/95978097/152193599-8cd2a179-9122-447e-9b86-2c98c6a726f3.png">
 
-##### Average Reading Score by Grade: 
+##### 2.3c Average Reading Score by Grade: 
 <img width="386" alt="Screen Shot 2022-02-02 at 8 23 23 AM" src="https://user-images.githubusercontent.com/95978097/152194313-915104a7-44b3-4884-afc6-2c6d4f23f83b.png">
 
-#### *Scores by School Spending*
+#### 2.3d *Scores by School Spending*
 Alternatively, replacing ninth grade scores did not change the outcome of the updated scores by school spending metric. Thomas High School still has a spending range (per student) of $630-$644 while values in each column remain the same. Images and code snippets of the original and updated DataFrames for the two analyses are shown below:
 
 ````
@@ -118,4 +118,54 @@ overall_passing_spending = per_school_summary_df.groupby(["Spending Ranges (Per 
 ##### Updated: 
 <img width="734" alt="Screen Shot 2022-02-02 at 8 41 10 AM" src="https://user-images.githubusercontent.com/95978097/152197539-19cbb05d-5073-4582-8f2c-63a73564c1a1.png">
 
-#### *Scores by School Size*
+#### 2.3e *Scores by School Size*
+
+Similarly, changing the ninth grade math and reading scores did not changes the results for scores by school size. Like in the first run of the analysis, medium sized schools (1000-2000 students), that Thomas High School falls, received the following scores (after formatting the columns): 
+
+- Average Math Score = **83.4**
+- Average Reading Score = **83.9**
+- % Passing Math = **94**
+- % Passing Reading = **97**
+- % Overall Passing = **91**
+
+Below is the code snippet and supporting DataFrame: 
+````
+# Establish the bins.
+size_bins = [0, 1000, 2000, 5000]
+group_names = ["Small (<1000)", "Medium (1000-2000)", "Large (2000-5000)"]
+# Categorize spending based on the bins.
+per_school_summary_df["School Size"] = pd.cut(per_school_summary_df["Total Students"], size_bins, labels=group_names)
+
+# Calculate averages for the desired columns. 
+size_math_scores = per_school_summary_df.groupby(["School Size"]).mean()["Average Math Score"]
+
+size_reading_scores = per_school_summary_df.groupby(["School Size"]).mean()["Average Reading Score"]
+
+size_passing_math = per_school_summary_df.groupby(["School Size"]).mean()["% Passing Math"]
+
+size_passing_reading = per_school_summary_df.groupby(["School Size"]).mean()["% Passing Reading"]
+
+size_overall_passing = per_school_summary_df.groupby(["School Size"]).mean()["% Overall Passing"]
+````
+<img width="681" alt="Screen Shot 2022-02-02 at 8 50 54 AM" src="https://user-images.githubusercontent.com/95978097/152199292-ada10a62-d942-4612-8094-717b59b11093.png">
+
+#### 2.3f *Scores by School Type*
+Lastly, replacing the ninth graders schools for THS also did not sway the scores by school type. With null values not counted and the total student count readjusted, the district school stype performance was not affected for this measure. The image of the DataFrame for this metric and its supporting code is below: 
+
+````
+# Calculate averages for the desired columns. 
+type_math_scores = per_school_summary_df.groupby(["School Type"]).mean()["Average Math Score"]
+
+type_reading_scores = per_school_summary_df.groupby(["School Type"]).mean()["Average Reading Score"]
+
+type_passing_math = per_school_summary_df.groupby(["School Type"]).mean()["% Passing Math"]
+
+type_passing_reading = per_school_summary_df.groupby(["School Type"]).mean()["% Passing Reading"]
+
+type_overall_passing = per_school_summary_df.groupby(["School Type"]).mean()["% Overall Passing"]
+````
+<img width="636" alt="Screen Shot 2022-02-02 at 8 54 19 AM" src="https://user-images.githubusercontent.com/95978097/152199863-c0f2bbae-b349-4036-b70b-2671cf228871.png">
+
+### 3 Summary
+
+
