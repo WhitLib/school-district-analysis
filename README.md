@@ -28,8 +28,14 @@ Additionally, the following metrics were recreated:
 
 ### 2.1 How is the district summary affected?
 
-The changes between the original and recreated school district summary only differ slightly. Images of the two DataFrames are portrayed below: 
+The changes between the original and recreated school district summary only differ slightly - 
 
+- the Average Math Score for the school district decreased by **0.1** from 79.0 to 78.9; 
+- % Passing Math decreased by **0.2** from 75% to 74.8%; 
+- % Passing Reading decreased by **0.3** from 86% to 85.7%; and 
+- % Overall Passing decreased by **0.1** from 65% to 64.9%. 
+
+Images of the two DataFrames are portrayed below: 
 
 #### Original: 
 <img width="922" alt="Screen Shot 2022-02-01 at 6 54 01 PM" src="https://user-images.githubusercontent.com/95978097/152086127-d03b5cc5-e289-4fff-af68-d3bb45dffb46.png">
@@ -37,7 +43,14 @@ The changes between the original and recreated school district summary only diff
 #### Updated:
 <img width="922" alt="Screen Shot 2022-02-01 at 6 52 28 PM" src="https://user-images.githubusercontent.com/95978097/152085978-3a3892fa-a6f4-4a5d-a647-46ddb91f83d7.png">
 
+### 2.2 How is the School Summary Affected?
 
-### 2.2 How is the school summary affected?
+The per school summary was affected because incorrect standardized test scores for Thomas High School were included in this DataFrame. Between the original and updated per school summary, the following columns and values differed for Thomas High School:
+
+- average math score decreased by **0.05** points from 83.41 to 83.36
+- average reading score increased by **0.05** points from 83.85 to 83.9
+- % passing math
+- % passing reading
+- % overall passing 
 
 ### 2.3 Replacing Ninth Grade Scores
