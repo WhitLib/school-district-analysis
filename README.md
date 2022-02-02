@@ -54,11 +54,68 @@ The per school summary was affected because incorrect standardized test scores f
 - % overall passing decreased **25.87%** from 90.95% to 65.08%
 
 Images of the original and updated DataFrames for the Per School Summary are shown below: 
-#### Original: 
+##### Original: 
 <img width="893" alt="Screen Shot 2022-02-01 at 7 29 49 PM" src="https://user-images.githubusercontent.com/95978097/152088802-d43f3b61-28e3-4f03-b901-7745572a5cc2.png">
 
-#### Updated:
+##### Updated:
 <img width="893" alt="Screen Shot 2022-02-01 at 7 31 34 PM" src="https://user-images.githubusercontent.com/95978097/152088949-0271e4b5-04ca-4f00-b1a0-05d2442f0fd0.png">
 
 
 ### 2.3 Replacing Ninth Grade Scores
+
+Replacing the ninth grade math and reading scores to NaN for Thomas High School greatly reduced its perceived performance against the other schools in the district. 
+Without recalculating the new student count for THS, inaccurate data were included to get % Passing Math, % Passing Reading, and % Overall Passing - making it appear that THS had one of the lowest passing percentages in the district (which ultimately is incorrect.) 
+
+#### *Math and Reading Scores by Grade*
+
+When analyzing other metrics in this analysis, replacing the reading and math scores for THS' ninth graders eliminated any data for standardized testing scores for ninth graders at THS, making any *valid* comparison for ninth grade inaccurate. A code snippet and DataFrames for math and reading scores by grade are displayed below: 
+
+````
+# Combine each Series for average math scores by school into single data frame.
+math_scores_by_grade = pd.DataFrame({
+               "9th": ninth_grade_math_scores,
+               "10th": tenth_grade_math_scores,
+               "11th": eleventh_grade_math_scores,
+               "12th": twelfth_grade_math_scores})
+
+# Combine each Series for average reading scores by school into single data frame.
+reading_scores_by_grade = pd.DataFrame({
+              "9th": ninth_grade_reading_scores,
+              "10th": tenth_grade_reading_scores,
+              "11th": eleventh_grade_reading_scores,
+              "12th": twelfth_grade_reading_scores})
+````
+##### Average Math Score by Grade: 
+<img width="386" alt="Screen Shot 2022-02-02 at 8 19 30 AM" src="https://user-images.githubusercontent.com/95978097/152193599-8cd2a179-9122-447e-9b86-2c98c6a726f3.png">
+
+##### Average Reading Score by Grade: 
+<img width="386" alt="Screen Shot 2022-02-02 at 8 23 23 AM" src="https://user-images.githubusercontent.com/95978097/152194313-915104a7-44b3-4884-afc6-2c6d4f23f83b.png">
+
+#### *Scores by School Spending*
+Alternatively, replacing ninth grade scores did not change the outcome of the updated scores by school spending metric. Thomas High School still has a spending range (per student) of $630-$644 while values in each column remain the same. Images and code snippets of the original and updated DataFrames for the two analyses are shown below:
+
+````
+# Establish the spending bins and group names.
+spending_bins = [0, 585, 630, 645, 675]
+group_names = ["<$584", "$585-629", "$630-644", "$645-675"]
+# Categorize spending based on the bins.
+per_school_summary_df["Spending Ranges (Per Student)"] = pd.cut(per_school_capita, spending_bins, labels=group_names)
+
+# Calculate averages for the desired columns. 
+spending_math_scores = per_school_summary_df.groupby(["Spending Ranges (Per Student)"]).mean()["Average Math Score"]
+
+spending_reading_scores = per_school_summary_df.groupby(["Spending Ranges (Per Student)"]).mean()["Average Reading Score"]
+
+spending_passing_math = per_school_summary_df.groupby(["Spending Ranges (Per Student)"]).mean()["% Passing Math"]
+
+spending_passing_reading = per_school_summary_df.groupby(["Spending Ranges (Per Student)"]).mean()["% Passing Reading"]
+
+overall_passing_spending = per_school_summary_df.groupby(["Spending Ranges (Per Student)"]).mean()["% Overall Passing"]
+````
+##### Original:
+<img width="734" alt="Screen Shot 2022-02-02 at 8 40 46 AM" src="https://user-images.githubusercontent.com/95978097/152197469-10e5c974-3905-4d3c-9307-3c875786cbec.png">
+
+##### Updated: 
+<img width="734" alt="Screen Shot 2022-02-02 at 8 41 10 AM" src="https://user-images.githubusercontent.com/95978097/152197539-19cbb05d-5073-4582-8f2c-63a73564c1a1.png">
+
+#### *Scores by School Size*
