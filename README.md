@@ -49,8 +49,16 @@ The per school summary was affected because incorrect standardized test scores f
 
 - average math score decreased by **0.05** points from 83.41 to 83.36
 - average reading score increased by **0.05** points from 83.85 to 83.9
-- % passing math
-- % passing reading
-- % overall passing 
+- % passing math decreased **26.36%** from 93.27% to 66.91%
+- % passing reading decreased **27.65%** from 97.31% to 69.66%
+- % overall passing decreased **25.87%** from 90.95% to 65.08%
+
+Images of the original and updated DataFrames for the Per School Summary are shown below: 
+#### Original: 
+<img width="893" alt="Screen Shot 2022-02-01 at 7 29 49 PM" src="https://user-images.githubusercontent.com/95978097/152088802-d43f3b61-28e3-4f03-b901-7745572a5cc2.png">
+
+#### Updated:
+<img width="893" alt="Screen Shot 2022-02-01 at 7 31 34 PM" src="https://user-images.githubusercontent.com/95978097/152088949-0271e4b5-04ca-4f00-b1a0-05d2442f0fd0.png">
+
 
 ### 2.3 Replacing Ninth Grade Scores
