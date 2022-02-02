@@ -85,13 +85,13 @@ reading_scores_by_grade = pd.DataFrame({
               "11th": eleventh_grade_reading_scores,
               "12th": twelfth_grade_reading_scores})
 ````
-##### 2.3b Average Math Score by Grade: 
+##### Average Math Score by Grade: 
 <img width="386" alt="Screen Shot 2022-02-02 at 8 19 30 AM" src="https://user-images.githubusercontent.com/95978097/152193599-8cd2a179-9122-447e-9b86-2c98c6a726f3.png">
 
-##### 2.3c Average Reading Score by Grade: 
+##### Average Reading Score by Grade: 
 <img width="386" alt="Screen Shot 2022-02-02 at 8 23 23 AM" src="https://user-images.githubusercontent.com/95978097/152194313-915104a7-44b3-4884-afc6-2c6d4f23f83b.png">
 
-#### 2.3d *Scores by School Spending*
+#### 2.3b *Scores by School Spending*
 Alternatively, replacing ninth grade scores did not change the outcome of the updated scores by school spending metric. Thomas High School still has a spending range (per student) of $630-$644 while values in each column remain the same. Images and code snippets of the original and updated DataFrames for the two analyses are shown below:
 
 ````
@@ -118,7 +118,7 @@ overall_passing_spending = per_school_summary_df.groupby(["Spending Ranges (Per 
 ##### Updated: 
 <img width="734" alt="Screen Shot 2022-02-02 at 8 41 10 AM" src="https://user-images.githubusercontent.com/95978097/152197539-19cbb05d-5073-4582-8f2c-63a73564c1a1.png">
 
-#### 2.3e *Scores by School Size*
+#### 2.3c *Scores by School Size*
 
 Similarly, changing the ninth grade math and reading scores did not changes the results for scores by school size. Like in the first run of the analysis, medium sized schools (1000-2000 students), that Thomas High School falls, received the following scores (after formatting the columns): 
 
@@ -149,7 +149,7 @@ size_overall_passing = per_school_summary_df.groupby(["School Size"]).mean()["% 
 ````
 <img width="681" alt="Screen Shot 2022-02-02 at 8 50 54 AM" src="https://user-images.githubusercontent.com/95978097/152199292-ada10a62-d942-4612-8094-717b59b11093.png">
 
-#### 2.3f *Scores by School Type*
+#### 2.3d *Scores by School Type*
 Lastly, replacing the ninth graders schools for THS also did not sway the scores by school type. With null values not counted and the total student count readjusted, the district school stype performance was not affected for this measure. The image of the DataFrame for this metric and its supporting code is below: 
 
 ````
@@ -168,4 +168,10 @@ type_overall_passing = per_school_summary_df.groupby(["School Type"]).mean()["% 
 
 ### 3 Summary
 
+Ultimately, when completing version two of the school distict analysis, **four** primary changes were evident after replacing the ninth grade reading scores for Thomas High School: 
+
+- Thomas High School performed considerably worse relative to other schools in the district when math and reading grades were replaced (this was not the case in the first analysis)
+- Replacing THS ninth graders' scores with NaNs produced NaN values and incomplete data when analyzing math and reading scores by grade
+- Eliminating the grades for THS ninth graders' adjusted the overall student count for the analysis
+- Adjusting the overall student count (and virtually eliminating THS ninth grade students from the analysis) lessened the amount of students at THS to analyze, reducing results for average test scores and overall passing percenages
 
