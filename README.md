@@ -5,6 +5,13 @@ School district analysis using Pandas
 - [1 Overview of School District Analysis](#1-overview-of-school-district-analysis)
   - [1.1 Requirements](#11-requirements)
 - [2 Results](#2-results)
+  - [2.1 How is the District Summary Affected?](#21-how-is-the-district-summary-affected)
+  - [2.2 How is the School Summary Affected?](#22-how-is-the-school-summary-affected)
+  - [2.3 Replacing Ninth Grade Scores](#23-replacing-ninth-grade-scores)
+   - [2.3a Math and Reading Scores by Grade](#23a-math-and-reading-scores-by-grade)
+   - [2.3b Scores by School Spending](#23b-scores-by-school-spending)
+   - [2.3c Scores by School Size](#23c-scores-by-school-size)
+   - [2.3d Scores by School Type](#23d-scores-by-school-type)
 - [3 Summary](#3-summary)
 
 
@@ -26,7 +33,7 @@ Additionally, the following metrics were recreated:
 
 ## 2 Results
 
-### 2.1 How is the district summary affected?
+### 2.1 How is the District Summary Affected?
 
 The changes between the original and recreated school district summary only differ slightly - 
 
@@ -171,7 +178,10 @@ type_overall_passing = per_school_summary_df.groupby(["School Type"]).mean()["% 
 Ultimately, when completing version two of the school distict analysis, **four** primary changes were evident after replacing the ninth grade reading scores for Thomas High School: 
 
 - Thomas High School performed considerably worse relative to other schools in the district when math and reading grades were replaced (this was not the case in the first analysis)
+
 - Replacing THS ninth graders' scores with NaNs produced NaN values and incomplete data when analyzing math and reading scores by grade
+
 - Eliminating the grades for THS ninth graders' adjusted the overall student count for the analysis
+
 - Adjusting the overall student count (and virtually eliminating THS ninth grade students from the analysis) lessened the amount of students at THS to analyze, reducing results for average test scores and overall passing percenages
 
